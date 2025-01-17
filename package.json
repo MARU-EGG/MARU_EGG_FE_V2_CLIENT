@@ -1,0 +1,68 @@
+{
+  "name": "maru_egg_client",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "storybook": "storybook dev -p 6006",
+    "commit": "cz",
+    "build-storybook": "storybook build"
+  },
+  "dependencies": {
+    "@tanstack/react-query": "^5.64.1",
+    "axios": "^1.7.9",
+    "clsx": "^2.1.1",
+    "commitizen": "^4.3.1",
+    "cz-customizable": "^7.4.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^7.1.1",
+    "tailwind-merge": "^2.6.0",
+    "vite-plugin-svgr": "^4.3.0",
+    "zustand": "^5.0.3"
+  },
+  "devDependencies": {
+    "@chromatic-com/storybook": "3.2.3",
+    "@eslint/js": "^9.17.0",
+    "@storybook/addon-essentials": "8.6.0-alpha.0",
+    "@storybook/addon-interactions": "8.6.0-alpha.0",
+    "@storybook/addon-onboarding": "8.6.0-alpha.0",
+    "@storybook/blocks": "8.6.0-alpha.0",
+    "@storybook/react": "8.6.0-alpha.0",
+    "@storybook/react-vite": "8.6.0-alpha.0",
+    "@storybook/test": "8.6.0-alpha.0",
+    "@trivago/prettier-plugin-sort-imports": "^5.2.1",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.4.20",
+    "chromatic": "^11.25.0",
+    "eslint": "^9.17.0",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "eslint-plugin-react-refresh": "^0.4.16",
+    "eslint-plugin-storybook": "^0.11.2",
+    "globals": "^15.14.0",
+    "postcss": "^8.5.1",
+    "prettier": "^3.2.5",
+    "prettier-plugin-tailwindcss": "^0.6.9",
+    "storybook": "8.6.0-alpha.0",
+    "tailwindcss": "^3.4.17",
+    "typescript": "~5.6.2",
+    "typescript-eslint": "^8.18.2",
+    "vite": "^6.0.5"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-customizable"
+    }
+  },
+  "eslintConfig": {
+    "extends": [
+      "plugin:storybook/recommended"
+    ]
+  }
+}
