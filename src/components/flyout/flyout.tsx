@@ -14,7 +14,7 @@ function Flyout({ children }: FlyoutProps) {
   return (
     <FlyoutContext.Provider value={{ isOpen, setIsOpen }}>
       <div className="relative w-56">
-        <div className="relative">{children}</div>
+        <div className="relative text-sm">{children}</div>
       </div>
     </FlyoutContext.Provider>
   );
