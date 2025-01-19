@@ -17,7 +17,7 @@ function ChooseAdmissionCategory({ changeStep }: Props) {
   const data = useAdmissionDetail(admissionType);
 
   const selectCategory = (catgory: string) => {
-    changeStep('choose_detail');
+    changeStep('admission_category_result');
     setMessages([
       {
         role: 'system',

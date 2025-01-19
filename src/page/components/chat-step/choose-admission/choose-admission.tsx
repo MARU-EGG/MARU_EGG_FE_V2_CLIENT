@@ -13,7 +13,7 @@ function ChooseAdmission({ changeStep }: Props) {
   const { setAdmissionType } = useAdmissionStore();
   const { setMessages } = useMessagesStore();
 
-  const handleClick = (admission: AdmissionType) => {
+  const selectAdmission = (admission: AdmissionType) => {
     changeStep('choose_admission_category');
     setMessages([{ role: 'user', message: `${ADDMISSION[admission]} 전형이 궁금해요` }]);
     setAdmissionType(admission);
@@ -25,7 +25,7 @@ function ChooseAdmission({ changeStep }: Props) {
         {admissions.map((admission) => (
           <PresetButton
             key={admission}
-            onClick={() => handleClick(admission)}
+            onClick={() => selectAdmission(admission)}
           >{`${ADDMISSION[admission]} 전형이 궁금해요`}</PresetButton>
         ))}
       </div>
