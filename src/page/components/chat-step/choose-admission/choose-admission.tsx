@@ -14,7 +14,7 @@ function ChooseAdmission({ changeStep }: Props) {
   const { setMessages } = useMessagesStore();
 
   const selectAdmission = (admission: AdmissionType) => {
-    changeStep('choose_admission_category');
+    changeStep('입시유형 상세전형 선택');
     setMessages([{ role: 'user', message: `${ADDMISSION[admission]} 전형이 궁금해요` }]);
     setAdmissionType(admission);
   };
