@@ -1,28 +1,24 @@
-import AdmissionCategoryMenus from '@/components/chat-step/choose-admission-category/admission-category-menus';
-import Chat from '@/components/chat/chat';
+import { useEffect } from 'react';
+import Selector from '@/components/selector/selector';
 import systemMessage from '@/constants/message';
 import useAdmissionDetail from '@/hooks/querys/useAdmissionDetail';
 import useAdmissionStore from '@/stores/store/admission-store';
 import useMessagesStore from '@/stores/store/message-store';
-import { ADDMISSION } from '@/types/admission-type';
+import { ADDMISSION, AdmissionType } from '@/types/admission-type';
 import { ChatSteps } from '@/types/chat';
 
 interface Props {
   changeStep: (step: ChatSteps) => void;
+  admissionType: AdmissionType;
 }
 
-function ChooseAdmissionCategory({ changeStep }: Props) {
+function ChooseAdmissionCategory({ admissionType, changeStep }: Props) {
   const { setMessages } = useMessagesStore();
-  const { admissionType, setAdmissionCategory } = useAdmissionStore();
+  const { setAdmissionCategory } = useAdmissionStore();
   const data = useAdmissionDetail(admissionType);
-
   const selectCategory = (catgory: string) => {
-    changeStep('admission_category_result');
+    changeStep('상세전형 선택 결과');
     setMessages([
-      {
-        role: 'system',
-        message: systemMessage.admissionGuide(ADDMISSION[admissionType!]),
-      },
       {
         role: 'user',
         message: catgory,
@@ -31,11 +27,30 @@ function ChooseAdmissionCategory({ changeStep }: Props) {
     setAdmissionCategory(catgory);
   };
 
+  useEffect(() => {
+    setMessages([
+      {
+        role: 'system',
+        message: systemMessage.admissionGuide(ADDMISSION[admissionType]),
+      },
+    ]);
+  }, []);
+
   return (
     <div>
-      <Chat role="system">{systemMessage.admissionGuide(ADDMISSION[admissionType!])}</Chat>
       <div className="mt-2">
-        <AdmissionCategoryMenus admissionType={admissionType!} data={data} selectCategory={selectCategory} />
+        <div className="flex w-80 cursor-grab flex-nowrap items-start gap-5 overflow-x-auto">
+          {data.map((option) => (
+            <Selector key={option.label}>
+              <Selector.Header>{`${option.label}전형`}</Selector.Header>
+              {option.children.map((menu) => (
+                <Selector.Option key={menu} onClick={() => selectCategory(menu)}>
+                  {menu}
+                </Selector.Option>
+              ))}
+            </Selector>
+          ))}
+        </div>
       </div>
     </div>
   );
