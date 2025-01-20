@@ -1,5 +1,3 @@
-import Flyout from '@/components/flyout/flyout';
-import FlyoutMenusWrapper from '@/components/flyout/flyout-menus-wrapper';
 import Selector from '@/components/selector/selector';
 import { AdmissionType } from '@/types/admission-type';
 
@@ -9,38 +7,20 @@ interface Props {
   selectCategory: (catgory: string) => void;
 }
 
-function AdmissionCategoryMenus({ admissionType, data, selectCategory }: Props) {
-  if (admissionType === 'PYEONIP') {
-    return (
-      <Selector>
-        {data.map((option) => (
-          <Selector.Option key={option.label} onClick={() => selectCategory(option.label)}>
-            {option.label}
-          </Selector.Option>
-        ))}
-      </Selector>
-    );
-  }
-
+function AdmissionCategoryMenus({ data, selectCategory }: Props) {
   return (
-    <FlyoutMenusWrapper>
-      {data.map((menu, index) => (
-        <Flyout key={menu.label}>
-          <Flyout.Trigger
-            className={`${index === 0 ? 'rounded-t-lg' : index === data.length - 1 ? 'rounded-b-lg' : 'rounded-none'}`}
-          >
-            {menu.label}
-          </Flyout.Trigger>
-          <Flyout.Items>
-            {menu.children.map((children) => (
-              <Flyout.Item key={children} onClick={() => selectCategory(children)}>
-                {children}
-              </Flyout.Item>
-            ))}
-          </Flyout.Items>
-        </Flyout>
+    <div className="flex w-80 cursor-grab flex-nowrap items-start gap-5 overflow-x-auto">
+      {data.map((option) => (
+        <Selector>
+          <Selector.Header>{`${option.label}전형`}</Selector.Header>
+          {option.children.map((menu) => (
+            <Selector.Option key={menu} onClick={() => selectCategory(menu)}>
+              {menu}
+            </Selector.Option>
+          ))}
+        </Selector>
       ))}
-    </FlyoutMenusWrapper>
+    </div>
   );
 }
 
