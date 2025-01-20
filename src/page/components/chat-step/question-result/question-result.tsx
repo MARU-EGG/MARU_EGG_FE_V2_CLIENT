@@ -54,6 +54,7 @@ function QuestionResult({ admissionType, admissionCategory, question, changeStep
             {question.label}
           </PresetButton>
         ))}
+        <PresetButton onClick={() => window.location.reload()}>조건 재설정</PresetButton>
       </div>
     </div>
   );

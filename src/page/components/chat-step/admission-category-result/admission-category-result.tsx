@@ -44,7 +44,7 @@ function AdmissionCategoryResult({ admissionType, changeStep, admissionCategory 
                 {question.label}
               </PresetButton>
             ))}
-            <PresetButton>조건 재설정</PresetButton>
+            <PresetButton onClick={() => window.location.reload()}>조건 재설정</PresetButton>
           </div>
         </div>
       </div>
