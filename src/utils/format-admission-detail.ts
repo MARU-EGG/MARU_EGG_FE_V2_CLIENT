@@ -1,10 +1,17 @@
 import { ResponseDetailAdmissionType } from '@/types/admission-type';
 
-function formatAdmissionDetail(data: ResponseDetailAdmissionType[]) {
+interface ReturnType {
+  label: string;
+  children: string[];
+}
+
+function formatAdmissionDetail(data: ResponseDetailAdmissionType[]): ReturnType[] {
   if (data[0].type === 'PYEONIP') {
-    return data.map((data) => {
-      return { label: data.name, children: [] };
+    const formatData: ReturnType[] = [{ label: '편입전형', children: [] }];
+    data.map((data) => {
+      formatData[0].children.push(data.name);
     });
+    return formatData;
   }
 
   const regex = /(.+)\((.+)\)/;
