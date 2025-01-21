@@ -2,6 +2,7 @@ import { Suspense, useState } from 'react';
 import AdmissionCategoryResult from '@/page/components/chat-step/admission-category-result/admission-category-result';
 import ChooseAdmissionCategory from '@/page/components/chat-step/choose-admission-category/choose-admission-category';
 import ChooseAdmission from '@/page/components/chat-step/choose-admission/choose-admission';
+import ChooseDepartment from '@/page/components/chat-step/choose-department/choose-department';
 import QuestionResult from '@/page/components/chat-step/question-result/question-result';
 import ReferenceResult from '@/page/components/chat-step/reference-result/reference-result';
 import Funnel from '@/page/components/funnel/funnel';
@@ -47,6 +48,9 @@ function Main() {
         </Funnel.Step>
         <Funnel.Step step="질문 출처 결과">
           <ReferenceResult changeStep={changeStep} />
+        </Funnel.Step>
+        <Funnel.Step step="상세전형 학과별 입시">
+          <ChooseDepartment />
         </Funnel.Step>
       </Funnel>
     </main>
