@@ -1,4 +1,4 @@
-import { Suspense, useState } from 'react';
+import { Suspense, useEffect, useRef, useState } from 'react';
 import AdmissionCategoryResult from '@/page/components/chat-step/admission-category-result/admission-category-result';
 import ChooseAdmissionCategory from '@/page/components/chat-step/choose-admission-category/choose-admission-category';
 import ChooseAdmission from '@/page/components/chat-step/choose-admission/choose-admission';
@@ -8,20 +8,26 @@ import ReferenceResult from '@/page/components/chat-step/reference-result/refere
 import Funnel from '@/page/components/funnel/funnel';
 import MessageHistory from '@/page/components/message-history/message-history';
 import useAdmissionStore from '@/stores/store/admission-store';
+import useMessagesStore from '@/stores/store/message-store';
 import { ChatSteps } from '@/types/chat';
 
 function Main() {
   const [steps, setSteps] = useState<ChatSteps>('입시유형 선택');
   const { admissionType, admissionCategory, question } = useAdmissionStore();
+  const { messages } = useMessagesStore();
+  const messageEndRef = useRef<HTMLDivElement | null>(null);
 
   const changeStep = (step: ChatSteps) => {
     setSteps(step);
   };
 
+  useEffect(() => {
+    messageEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [messages, steps]);
+
   return (
     <main className="flex h-full flex-col gap-6 overflow-y-auto overflow-x-hidden py-6 pl-12 pr-3">
       <MessageHistory />
-
       <Funnel step={steps}>
         <Funnel.Step step="입시유형 선택">
           <ChooseAdmission changeStep={changeStep} />
@@ -53,6 +59,7 @@ function Main() {
           <ChooseDepartment />
         </Funnel.Step>
       </Funnel>
+      <div className="h-3" ref={messageEndRef}></div>
     </main>
   );
 }
