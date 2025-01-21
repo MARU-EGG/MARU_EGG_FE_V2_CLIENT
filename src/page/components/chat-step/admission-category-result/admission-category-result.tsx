@@ -14,7 +14,7 @@ interface Props {
 
 function AdmissionCategoryResult({ admissionType, changeStep, admissionCategory }: Props) {
   const { setQuestion } = useAdmissionStore();
-  const { result, isLoading } = useAdmissionQuestionResult({
+  const { isLoading } = useAdmissionQuestionResult({
     admissionType: admissionType,
     category: 'ADMISSION_GUIDELINE',
     question: admissionCategory,
@@ -28,7 +28,7 @@ function AdmissionCategoryResult({ admissionType, changeStep, admissionCategory 
     setQuestion(question);
   };
 
-  if (!isLoading && result)
+  if (!isLoading)
     return (
       <div>
         <div className="mt-2 flex w-full justify-end">
@@ -44,6 +44,7 @@ function AdmissionCategoryResult({ admissionType, changeStep, admissionCategory 
                 {question.label}
               </PresetButton>
             ))}
+            <PresetButton onClick={() => changeStep('상세전형 학과별 입시')}>학과별 입시</PresetButton>
             <PresetButton onClick={() => window.location.reload()}>조건 재설정</PresetButton>
           </div>
         </div>
