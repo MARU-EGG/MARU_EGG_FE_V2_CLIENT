@@ -1,4 +1,4 @@
-import Chat from '@/components/chat/chat';
+import { useEffect } from 'react';
 import PresetButton from '@/components/preset-button/preset-button';
 import Selector from '@/components/selector/selector';
 import systemMessage from '@/constants/message';
@@ -29,9 +29,12 @@ function ReferenceResult({ changeStep }: ReferenceResultProps) {
     setQuestion(question);
   };
 
+  useEffect(() => {
+    setMessages([{ role: 'system', message: systemMessage.referenceGuide }]);
+  }, []);
+
   return (
     <>
-      <Chat role="system">{systemMessage.referenceGuide}</Chat>
       <Selector>
         <Selector.Header>모집요강으로 이동</Selector.Header>
         {references.map((reference) => (
