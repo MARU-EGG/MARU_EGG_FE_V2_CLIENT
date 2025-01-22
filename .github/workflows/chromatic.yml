@@ -21,16 +21,15 @@ jobs:
     steps:
       - name: Check out code
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
-      - name: Use Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18
+      - name: Install pnpm
+        run: npm install -g pnpm
 
       - name: Install dependencies
-        run: npm install
+        run: pnpm install
+
+      - name: Build Storybook
+        run: pnpm run build-storybook --output-dir=storybook-static
 
       - name: Publish to Chromatic
         id: chromatic
