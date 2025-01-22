@@ -1,12 +1,19 @@
-export type admissionType = undefined | 'SUSI' | 'PYEONIP' | 'JEONGSI';
+export const ADDMISSION = {
+  SUSI: '수시',
+  JEONGSI: '정시',
+  PYEONIP: '편입',
+} as const;
 
-export interface responseDetailAdmissionType {
+export type AdmissionType = keyof typeof ADDMISSION;
+export type AdmissonValue = (typeof ADDMISSION)[AdmissionType];
+
+export interface ResponseDetailAdmissionType {
   id: number;
   name: string;
-  admissiontype: admissionType;
+  type: AdmissionType;
 }
 
 export interface isActiveAdmissionType {
-  admissionType: admissionType;
+  admissionType: AdmissionType;
   isActivated: boolean;
 }
