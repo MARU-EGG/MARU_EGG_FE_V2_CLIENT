@@ -20,23 +20,23 @@ jobs:
 
     steps:
       - name: Check out code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
       - name: Use Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 18
 
-      - name: cache dependencies
+      - name: Cache dependencies
         id: cache
         uses: actions/cache@v4
         with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}-storybook
-  
-      - name: depedency install
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}-storybook
+
+      - name: Install dependencies
         if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci
 
@@ -48,7 +48,6 @@ jobs:
         uses: chromaui/action@latest
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-          
 
       - name: Comment PR with Storybook link
         uses: thollander/actions-comment-pull-request@v1
