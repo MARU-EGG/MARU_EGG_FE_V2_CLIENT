@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
-import Selector from '@/components/selector/selector';
+import CheckBox from '@/components/menu-items/check-box/check-box';
+import MenuList from '@/components/menu-list/menu-list';
 import systemMessage from '@/constants/message';
 import useMessagesStore from '@/stores/store/message-store';
 
@@ -11,15 +12,11 @@ function ChooseDepartment() {
   }, []);
 
   return (
-    <Selector>
-      <Selector.Header>캠퍼스를 선택해주세요</Selector.Header>
-      <Selector.Option style="checkbox" onClick={() => alert('개발중!')}>
-        인문캠퍼스
-      </Selector.Option>
-      <Selector.Option style="checkbox" onClick={() => alert('개발중!')}>
-        자연캠퍼스
-      </Selector.Option>
-    </Selector>
+    <MenuList>
+      <MenuList.Title title="캠퍼스를 선택해주세요"></MenuList.Title>
+      <CheckBox label="인문캠퍼스"></CheckBox>
+      <CheckBox label="자연캠퍼스"></CheckBox>
+    </MenuList>
   );
 }
 
