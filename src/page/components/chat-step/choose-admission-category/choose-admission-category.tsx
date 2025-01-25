@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
-import Selector from '@/components/selector/selector';
+import TextMenu from '@/components/menu-items/text-menu/text-menu';
+import MenuList from '@/components/menu-list/menu-list';
 import systemMessage from '@/constants/message';
 import useAdmissionDetail from '@/hooks/querys/useAdmissionDetail';
 import useAdmissionStore from '@/stores/store/admission-store';
@@ -41,14 +42,12 @@ function ChooseAdmissionCategory({ admissionType, changeStep }: Props) {
       <div className="mt-2">
         <div className="flex w-80 cursor-grab flex-nowrap items-start gap-5 overflow-x-auto">
           {data.map((option) => (
-            <Selector key={option.label}>
-              <Selector.Header>{`${option.label}전형`}</Selector.Header>
+            <MenuList key={option.label}>
+              <MenuList.Title title={`${option.label}전형`} />
               {option.children.map((menu) => (
-                <Selector.Option key={menu} onClick={() => selectCategory(menu)}>
-                  {menu}
-                </Selector.Option>
+                <TextMenu label={menu} key={menu} onClick={() => selectCategory(menu)} />
               ))}
-            </Selector>
+            </MenuList>
           ))}
         </div>
       </div>
