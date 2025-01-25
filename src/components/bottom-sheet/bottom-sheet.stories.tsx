@@ -2,7 +2,8 @@ import { useState } from 'react';
 import BottomSheet from '@/components/bottom-sheet/bottom-sheet';
 import Header from '@/components/header/header';
 import Layout from '@/components/layout/layout';
-import Selector from '@/components/selector/selector';
+import DropdownMenu from '@/components/menu-items/dropdown-menu/dropdown-menu';
+import MenuList from '@/components/menu-list/menu-list';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const menu = [
@@ -44,12 +45,10 @@ export const Default: Story = {
       <Layout>
         <Header />
         <div className="flex justify-center">
-          <Selector>
-            <Selector.Header>학과(부)를 선택해주세요</Selector.Header>
-            <Selector.Option style="dropDown" onClick={() => setIsOpen(true)}>
-              여기를 눌러주세요
-            </Selector.Option>
-          </Selector>
+          <MenuList>
+            <MenuList.Title title="학과(부)를 선택해주세요"></MenuList.Title>
+            <DropdownMenu label="여기를 눌러주세요" onClick={() => setIsOpen(true)} />
+          </MenuList>
         </div>
 
         <BottomSheet open={isOpen} onClose={() => setIsOpen(false)}>
