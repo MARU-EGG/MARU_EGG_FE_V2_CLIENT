@@ -8,6 +8,7 @@ import useAdmissionStore from '@/stores/store/admission-store';
 import useMessagesStore from '@/stores/store/message-store';
 import useQuestionReferencesStore from '@/stores/store/question-references-store';
 import { ChatSteps } from '@/types/chat';
+import { apiEventGATrigger } from '@/utils/ga-trigger';
 
 interface ReferenceResultProps {
   changeStep: (step: ChatSteps) => void;
@@ -38,7 +39,19 @@ function ReferenceResult({ changeStep }: ReferenceResultProps) {
       <Selector>
         <Selector.Header>모집요강으로 이동</Selector.Header>
         {references.map((reference) => (
-          <Selector.Option onClick={() => window.open(reference.link)}>{reference.title}</Selector.Option>
+          <Selector.Option
+            onClick={() => {
+              window.open(reference.link);
+              apiEventGATrigger({
+                category: 'reference check',
+                action: 'click',
+                label: '출처 pdf 클릭하기',
+                value: 1,
+              });
+            }}
+          >
+            {reference.title}
+          </Selector.Option>
         ))}
       </Selector>
       <div className="mt-2 flex w-full justify-end">
@@ -47,13 +60,31 @@ function ReferenceResult({ changeStep }: ReferenceResultProps) {
             <PresetButton
               onClick={() => {
                 selectQuestion(question);
+                apiEventGATrigger({
+                  category: 'preset button click',
+                  action: 'click',
+                  label: `${question}질문`,
+                  value: 1,
+                });
               }}
               key={question.label}
             >
               {question.label}
             </PresetButton>
           ))}
-          <PresetButton onClick={() => window.location.reload()}>조건 재설정</PresetButton>
+          <PresetButton
+            onClick={() => {
+              window.location.reload();
+              apiEventGATrigger({
+                category: 'reference check',
+                action: 'click',
+                label: '출처 pdf 클릭하기',
+                value: 1,
+              });
+            }}
+          >
+            조건 재설정
+          </PresetButton>
         </div>
       </div>
     </>

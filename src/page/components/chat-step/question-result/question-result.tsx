@@ -72,7 +72,7 @@ function QuestionResult({ admissionType, admissionCategory, question, changeStep
         <PresetButton
           onClick={() => {
             window.location.reload();
-            apiEventGATrigger({ category: 'preset button click', action: 'click', label: '새로고침하기', value: 1 });
+            apiEventGATrigger({ category: 'preset button click', action: 'click', label: '조건재설정', value: 1 });
           }}
         >
           조건 재설정
