@@ -5,7 +5,7 @@ module.exports = {
       colors: {
         primary: {
           DEFAULT: '#002968',
-          bg: 'rgba(0, 41, 104, 0.06)',
+          egg: 'rgba(0, 41, 104, 0.06)',
         },
         category_border: '#EBEBEB',
       },
@@ -14,10 +14,9 @@ module.exports = {
         desktop: '769px',
       },
       fontSize: {
-        body1: ['12px', { lineHeight: '24px', fontWeight: '400' }],
-        body2: ['12px', { lineHeight: '24px', fontWeight: '500' }],
-        body3: ['16px', { fontWeight: '500' }],
-        title: ['16px', { fontWeight: '700' }],
+        headline: ['16px', { lineHeight: '22.4px', fontWeight: '600' }],
+        body: ['14px', { lineHeight: '21px', fontWeight: '400' }],
+        label: ['12px', { lineHeight: '18px', fontWeight: '500' }],
       },
       fontFamily: {
         sans: ['Pretendard', 'sans-serif'],
