@@ -6,6 +6,7 @@ import useAdmissionStore from '@/stores/store/admission-store';
 import useMessagesStore from '@/stores/store/message-store';
 import { ADDMISSION, AdmissionType } from '@/types/admission-type';
 import { ChatSteps } from '@/types/chat';
+import { apiEventGATrigger } from '@/utils/ga-trigger';
 
 interface Props {
   changeStep: (step: ChatSteps) => void;
@@ -16,15 +17,21 @@ function ChooseAdmissionCategory({ admissionType, changeStep }: Props) {
   const { setMessages } = useMessagesStore();
   const { setAdmissionCategory } = useAdmissionStore();
   const data = useAdmissionDetail(admissionType);
-  const selectCategory = (catgory: string) => {
+  const selectCategory = (category: string) => {
     changeStep('상세전형 선택 결과');
     setMessages([
       {
         role: 'user',
-        message: catgory,
+        message: category,
       },
     ]);
-    setAdmissionCategory(catgory);
+    setAdmissionCategory(category);
+    apiEventGATrigger({
+      category: 'admission category select',
+      action: 'click',
+      label: `${category}질문`,
+      value: 1,
+    });
   };
 
   useEffect(() => {

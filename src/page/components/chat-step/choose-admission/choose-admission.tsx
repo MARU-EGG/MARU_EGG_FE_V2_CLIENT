@@ -3,6 +3,7 @@ import useAdmissionStore from '@/stores/store/admission-store';
 import useMessagesStore from '@/stores/store/message-store';
 import { ADDMISSION, AdmissionType } from '@/types/admission-type';
 import { ChatSteps } from '@/types/chat';
+import { apiEventGATrigger } from '@/utils/ga-trigger';
 
 interface Props {
   changeStep: (step: ChatSteps) => void;
@@ -17,6 +18,12 @@ function ChooseAdmission({ changeStep }: Props) {
     changeStep('입시유형 상세전형 선택');
     setMessages([{ role: 'user', message: `${ADDMISSION[admission]} 전형이 궁금해요` }]);
     setAdmissionType(admission);
+    apiEventGATrigger({
+      category: 'admission type select',
+      action: 'click',
+      label: `${admission}`,
+      value: 1,
+    });
   };
 
   return (
