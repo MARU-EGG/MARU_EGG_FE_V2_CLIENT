@@ -7,7 +7,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 function App() {
   useEffect(() => {
     if (!window.location.href.includes('localhost')) {
-      ReactGA.initialize(import.meta.env.GOOGLE_ANALYTICS_MEASUREMENT_ID);
+      ReactGA.initialize(import.meta.env.VITE_GOOGLE_ANALYTICS_MEASUREMENT_ID);
     }
   }, []);
   const queryClient = new QueryClient();
