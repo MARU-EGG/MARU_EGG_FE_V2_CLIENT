@@ -1,5 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { WarningIcon } from '@/assets/svg';
+import { useAnimation } from '@/hooks/use-animation.hooks';
+import { cn } from '@/utils/style';
 
 interface SnackbarProps {
   open: boolean;
@@ -9,16 +11,13 @@ interface SnackbarProps {
   position: 'top' | 'bottom';
 }
 
-function Snackbar({ open, handleClose, autoHideDuration, message }: SnackbarProps) {
-  const [isVisible, setIsVisible] = useState(false);
+function Snackbar({ open, handleClose, autoHideDuration, message, position }: SnackbarProps) {
+  const { shouldRender, onTransitionEnd, animationTrigger } = useAnimation(open);
 
   useEffect(() => {
     let timer = null;
-
     if (open) {
-      setIsVisible(true);
       timer = setTimeout(() => {
-        setIsVisible(false);
         setTimeout(() => {
           handleClose();
         }, 200);
@@ -28,16 +27,18 @@ function Snackbar({ open, handleClose, autoHideDuration, message }: SnackbarProp
     return () => {
       if (timer) clearTimeout(timer);
     };
-  }, [open, autoHideDuration, handleClose]);
+  }, [open]);
 
-  if (!open) return null;
+  if (!shouldRender) return null;
 
   return (
-    <div className="absolute bottom-24 flex w-full justify-center">
+    <div className={cn('absolute z-20 flex w-full justify-center', position === 'bottom' ? 'bottom-24' : 'top-5')}>
       <div
-        className={`flex gap-3 rounded-3xl bg-slate-800 px-8 py-4 text-headline text-white transition-all duration-200 ${
-          isVisible ? 'translate-y-0 opacity-100' : 'translate-y-2 opacity-0'
-        } `}
+        onTransitionEnd={onTransitionEnd}
+        className={cn(
+          'flex gap-3 rounded-3xl bg-slate-800 px-8 py-4 text-headline text-white transition-all duration-200',
+          animationTrigger ? 'translate-y-0 opacity-100' : 'translate-y-2 opacity-0',
+        )}
       >
         <WarningIcon />
         <span>{message}</span>
