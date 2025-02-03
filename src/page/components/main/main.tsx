@@ -28,7 +28,7 @@ function Main() {
 
   return (
     <>
-      <main className="flex h-full flex-col gap-6 overflow-y-auto overflow-x-hidden">
+      <main className="scrollbar flex h-full flex-col gap-6 overflow-y-auto overflow-x-hidden">
         <div className="flex-1 py-6 pl-12 pr-3">
           <MessageHistory />
           <Funnel step={steps}>
