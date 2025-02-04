@@ -7,3 +7,16 @@
 .bg-image-tree-right {
   @apply bg-[url('./assets/svg/tree.svg')] bg-contain bg-right bg-no-repeat;
 }
+
+@layer utilities {
+  .scrollbar::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb {
+    background: rgb(209, 209, 209);
+    border: 1px solid rgb(209, 209, 209); /* 배경색과 같은 색상의 보더 */
+    border-radius: 100px;
+  }
+}
