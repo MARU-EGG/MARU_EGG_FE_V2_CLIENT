@@ -6,3 +6,5 @@ export { default as SendIcon } from '@assets/svg/send.svg?react';
 export { default as CheckTrueIcon } from '@assets/svg/check-true.svg?react';
 export { default as CheckFalseIcon } from '@assets/svg/check-false.svg?react';
 export { default as WarningIcon } from '@assets/svg/warning.svg?react';
+export { default as HamburgerIcon } from '@assets/svg/hamburger.svg?react';
+export { default as CloseIcon } from '@assets/svg/close.svg?react';
