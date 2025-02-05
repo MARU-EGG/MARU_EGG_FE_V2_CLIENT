@@ -1,8 +1,8 @@
 import { CloseIcon, HamburgerIcon, ReloadIcon } from '@/assets/svg';
 import BottomSheet from '@/components/bottom-sheet/bottom-sheet';
 import Chip from '@/components/chip/chip';
-import AdmissionQuickLinkTabs from '@/components/header/admission-quick-link-tabs';
-import Contact from '@/components/header/contact';
+import AdmissionQuickLinkTabs from '@/components/header/bottom-sheet/admission-quick-link-tabs';
+import Contact from '@/components/header/bottom-sheet/contact';
 import IconButton from '@/components/icon-button/icon-button';
 import CHIP_LABEL from '@/constants/header-chip-labels';
 import { useBottomSheet } from '@/hooks/use-bottom-sheet-hooks';
