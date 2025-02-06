@@ -17,6 +17,7 @@ export function useQuestionForm({ changeStep }: UseQuestionFormProps) {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!content.trim()) return;
     setQuestion({
       label: content,
       category: 'ADMISSION_GUIDELINE',
@@ -25,7 +26,7 @@ export function useQuestionForm({ changeStep }: UseQuestionFormProps) {
     setMessages([
       {
         role: 'user',
-        message: content,
+        message: content.trim(),
       },
     ]);
     changeStep('상세전형 질문 결과');
