@@ -1,4 +1,5 @@
 import { Suspense, useEffect, useRef, useState } from 'react';
+import APIErrorBoundary from '@/components/error/api-error-boundary';
 import AdmissionCategoryResult from '@/page/components/chat-step/admission-category-result/admission-category-result';
 import ChooseAdmissionCategory from '@/page/components/chat-step/choose-admission-category/choose-admission-category';
 import ChooseAdmission from '@/page/components/chat-step/choose-admission/choose-admission';
@@ -36,9 +37,11 @@ function Main() {
               <ChooseAdmission changeStep={changeStep} />
             </Funnel.Step>
             <Funnel.Step step="입시유형 상세전형 선택">
-              <Suspense>
-                <ChooseAdmissionCategory changeStep={changeStep} admissionType={admissionType!} />
-              </Suspense>
+              <APIErrorBoundary>
+                <Suspense>
+                  <ChooseAdmissionCategory changeStep={changeStep} admissionType={admissionType!} />
+                </Suspense>
+              </APIErrorBoundary>
             </Funnel.Step>
             <Funnel.Step step="상세전형 선택 결과">
               <AdmissionCategoryResult
@@ -48,12 +51,14 @@ function Main() {
               />
             </Funnel.Step>
             <Funnel.Step step="상세전형 질문 결과">
-              <QuestionResult
-                admissionType={admissionType!}
-                admissionCategory={admissionCategory!}
-                question={question!}
-                changeStep={changeStep}
-              />
+              <APIErrorBoundary>
+                <QuestionResult
+                  admissionType={admissionType!}
+                  admissionCategory={admissionCategory!}
+                  question={question!}
+                  changeStep={changeStep}
+                />
+              </APIErrorBoundary>
             </Funnel.Step>
             <Funnel.Step step="질문 출처 결과">
               <ReferenceResult changeStep={changeStep} />
