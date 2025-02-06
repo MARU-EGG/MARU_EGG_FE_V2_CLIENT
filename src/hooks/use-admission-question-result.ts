@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import systemMessage from '@/constants/message';
 import usePostQuestion from '@/hooks/querys/usePostQuestion';
 import useMessagesStore from '@/stores/store/message-store';
 import useQuestionReferencesStore from '@/stores/store/question-references-store';
@@ -69,9 +68,6 @@ export default function useAdmissionQuestionResult({
           ]);
           setReferences(data.references);
           queryClient.setQueryData(QUERY_KEY, data.answer.content);
-        },
-        onError: () => {
-          setMessages([{ role: 'system', message: systemMessage.errorMessage }]);
         },
       },
     );
