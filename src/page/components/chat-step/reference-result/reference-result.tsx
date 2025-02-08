@@ -37,23 +37,26 @@ function ReferenceResult({ changeStep }: ReferenceResultProps) {
 
   return (
     <>
-      <MenuList>
-        <MenuList.Title title="모집요강으로 이동" />
-        {references.map((reference) => (
-          <TextMenu 
-            key={reference.link} 
-            label={reference.title} 
-            onClick={() => {
-              window.open(reference.link);
-              apiEventGATrigger({
-                category: 'reference check',
-                action: 'click',
-                label: '출처 pdf 클릭하기',
-                value: 1,
-              });
-            }} />
-        ))}
-      </MenuList>
+      <div className="mt-2">
+        <MenuList>
+          <MenuList.Title title="모집요강으로 이동" />
+          {references.map((reference) => (
+            <TextMenu
+              key={reference.link}
+              label={reference.title}
+              onClick={() => {
+                window.open(reference.link);
+                apiEventGATrigger({
+                  category: 'reference check',
+                  action: 'click',
+                  label: '출처 pdf 클릭하기',
+                  value: 1,
+                });
+              }}
+            />
+          ))}
+        </MenuList>
+      </div>
       <div className="mt-2 flex w-full justify-end">
         <div className="flex w-72 flex-wrap justify-end gap-2">
           {PRESET_BUTTON.map((question) => (

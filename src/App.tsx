@@ -10,7 +10,16 @@ function App() {
       ReactGA.initialize(import.meta.env.VITE_GOOGLE_ANALYTICS_MEASUREMENT_ID);
     }
   }, []);
-  const queryClient = new QueryClient();
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        throwOnError: true,
+      },
+      mutations: {
+        throwOnError: true,
+      },
+    },
+  });
   return (
     <QueryClientProvider client={queryClient}>
       <Routes>
