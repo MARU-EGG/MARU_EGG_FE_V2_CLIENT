@@ -1,3 +1,4 @@
+import ChatLoadingSpinner from '@/components/loading/chat-loading-spinner';
 import PresetButton from '@/components/preset-button/preset-button';
 import PRESET_BUTTON from '@/constants/preset-buttons';
 import { AdmissionPresetType } from '@/constants/preset-buttons';
@@ -39,7 +40,7 @@ function QuestionResult({ admissionType, admissionCategory, question, changeStep
     setQuestion(question);
   };
 
-  if (isLoading) return <div>Loading</div>;
+  if (isLoading) return <ChatLoadingSpinner />;
 
   return (
     <div className="mt-2 flex w-full justify-end">
