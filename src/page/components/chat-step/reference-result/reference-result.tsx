@@ -64,7 +64,7 @@ function ReferenceResult({ changeStep }: ReferenceResultProps) {
           </MenuList>
         )}
       </div>
-      <PresetButtons changeStep={changeStep} handleQuestionSelect={handleQuestionSelect} />
+      <PresetButtons changeStep={changeStep} handleQuestionSelect={handleQuestionSelect} showReferenceButton={false} />
     </>
   );
 }
