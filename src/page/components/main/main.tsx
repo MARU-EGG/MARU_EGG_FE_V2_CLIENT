@@ -68,7 +68,7 @@ function Main() {
             </Funnel.Step>
           </Funnel>
         </div>
-        <div className="mt-20">
+        <div className="mt-14">
           {admissionType && admissionCategory && <QuestionForm changeStep={changeStep} />}
           <div ref={messageEndRef}></div>
         </div>
