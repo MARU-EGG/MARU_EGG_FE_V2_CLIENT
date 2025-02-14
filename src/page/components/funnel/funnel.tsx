@@ -1,9 +1,8 @@
 import React from 'react';
 import Step from '@/page/components/funnel/step';
-import { ChatSteps } from '@/types/chat';
 
 interface FunnelProps {
-  step: ChatSteps;
+  step: string;
   children: React.ReactNode;
 }
 

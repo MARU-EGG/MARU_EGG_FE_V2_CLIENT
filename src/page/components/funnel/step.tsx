@@ -1,7 +1,5 @@
-import { ChatSteps } from '@/types/chat';
-
 interface StepProps {
-  step: ChatSteps;
+  step: string;
   children: React.ReactNode;
 }
 
