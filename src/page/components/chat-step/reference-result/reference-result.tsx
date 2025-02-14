@@ -1,14 +1,13 @@
 import { useEffect } from 'react';
 import TextMenu from '@/components/menu-items/text-menu/text-menu';
 import MenuList from '@/components/menu-list/menu-list';
-import PresetButton from '@/components/preset-button/preset-button';
 import systemMessage from '@/constants/message';
-import PRESET_BUTTON from '@/constants/preset-buttons';
 import { AdmissionPresetType } from '@/constants/preset-buttons';
+import PresetButtons from '@/page/components/preset-buttons/preset-buttons';
 import useAdmissionStore from '@/stores/store/admission-store';
 import useMessagesStore from '@/stores/store/message-store';
 import useQuestionReferencesStore from '@/stores/store/question-references-store';
-import { ChatSteps } from '@/types/chat';
+import { ChatSteps } from '@/types/steps';
 import { apiEventGATrigger } from '@/utils/ga-trigger';
 
 interface ReferenceResultProps {
@@ -20,7 +19,7 @@ function ReferenceResult({ changeStep }: ReferenceResultProps) {
   const { setMessages } = useMessagesStore();
   const { setQuestion } = useAdmissionStore();
 
-  const selectQuestion = (question: AdmissionPresetType) => {
+  const handleQuestionSelect = (question: AdmissionPresetType) => {
     changeStep('상세전형 질문 결과');
     setMessages([
       {
@@ -31,65 +30,41 @@ function ReferenceResult({ changeStep }: ReferenceResultProps) {
     setQuestion(question);
   };
 
+  const handleReferenceClick = (link: string) => {
+    window.open(link);
+    apiEventGATrigger({
+      category: 'reference check',
+      action: 'click',
+      label: '출처 pdf 클릭하기',
+      value: 1,
+    });
+  };
+
   useEffect(() => {
-    setMessages([{ role: 'system', message: systemMessage.referenceGuide }]);
+    setMessages([
+      { role: 'system', message: references ? systemMessage.referenceGuide : systemMessage.noReferenceGuide },
+    ]);
   }, []);
 
   return (
     <>
       <div className="mt-2">
-        <MenuList>
-          <MenuList.Title title="모집요강으로 이동" />
-          {references.map((reference) => (
-            <TextMenu
-              key={reference.link}
-              label={reference.title}
-              onClick={() => {
-                window.open(reference.link);
-                apiEventGATrigger({
-                  category: 'reference check',
-                  action: 'click',
-                  label: '출처 pdf 클릭하기',
-                  value: 1,
-                });
-              }}
-            />
-          ))}
-        </MenuList>
+        {references && (
+          <MenuList>
+            <MenuList.Title title="모집요강으로 이동" />
+            {references.map((reference) => (
+              <TextMenu
+                key={reference.link}
+                label={reference.title}
+                onClick={() => {
+                  handleReferenceClick(reference.link);
+                }}
+              />
+            ))}
+          </MenuList>
+        )}
       </div>
-      <div className="mt-2 flex w-full justify-end">
-        <div className="flex w-72 flex-wrap justify-end gap-2">
-          {PRESET_BUTTON.map((question) => (
-            <PresetButton
-              onClick={() => {
-                selectQuestion(question);
-                apiEventGATrigger({
-                  category: 'preset button click',
-                  action: 'click',
-                  label: `${question}질문`,
-                  value: 1,
-                });
-              }}
-              key={question.label}
-            >
-              {question.label}
-            </PresetButton>
-          ))}
-          <PresetButton
-            onClick={() => {
-              window.location.reload();
-              apiEventGATrigger({
-                category: 'reference check',
-                action: 'click',
-                label: '출처 pdf 클릭하기',
-                value: 1,
-              });
-            }}
-          >
-            조건 재설정
-          </PresetButton>
-        </div>
-      </div>
+      <PresetButtons changeStep={changeStep} handleQuestionSelect={handleQuestionSelect} />
     </>
   );
 }
