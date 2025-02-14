@@ -7,9 +7,10 @@ import { apiEventGATrigger } from '@/utils/ga-trigger';
 interface PresetButtonsProps {
   changeStep: (step: ChatSteps) => void;
   handleQuestionSelect: (question: AdmissionPresetType) => void;
+  showReferenceButton?: boolean;
 }
 
-function PresetButtons({ changeStep, handleQuestionSelect }: PresetButtonsProps) {
+function PresetButtons({ changeStep, handleQuestionSelect, showReferenceButton = true }: PresetButtonsProps) {
   const { setMessages } = useMessagesStore();
 
   const handleReferenceButtonClick = () => {
@@ -46,9 +47,11 @@ function PresetButtons({ changeStep, handleQuestionSelect }: PresetButtonsProps)
 
   return (
     <div>
-      <div className="mt-2 flex w-full justify-end">
+      <div className="mt-5 flex w-full justify-end">
         <div className="flex w-72 flex-wrap justify-end gap-2">
-          <PresetButton onClick={handleReferenceButtonClick}>🙋‍♂️ 어디에서 볼 수 있나요?</PresetButton>
+          {showReferenceButton && (
+            <PresetButton onClick={handleReferenceButtonClick}>🙋‍♂️ 어디에서 볼 수 있나요?</PresetButton>
+          )}
           {PRESET_BUTTON.map((question) => (
             <PresetButton
               onClick={() => {
