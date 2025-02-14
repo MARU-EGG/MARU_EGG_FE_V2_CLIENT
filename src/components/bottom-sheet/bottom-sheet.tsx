@@ -19,7 +19,7 @@ function BottomSheet({ open, onClose, children }: BottomSheetProps) {
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className={`absolute bottom-0 z-40 h-80 w-full overflow-y-auto rounded-t-2xl bg-white px-4 py-6 transition-transform duration-300 ${animationTrigger ? 'translate-y-0' : 'translate-y-full'}`}
+        className={`scrollbar absolute bottom-0 z-40 h-80 w-full overflow-y-auto rounded-t-2xl bg-white px-4 py-6 transition-transform duration-300 ${animationTrigger ? 'translate-y-0' : 'translate-y-full'}`}
       >
         {children}
       </div>
