@@ -6,15 +6,16 @@ import useDepartment from '@/hooks/querys/useDepartment';
 import { useBottomSheet } from '@/hooks/use-bottom-sheet-hooks';
 import useAdmissionStore from '@/stores/store/admission-store';
 import useMessagesStore from '@/stores/store/message-store';
+import { ResponseCollegeType } from '@/types/department';
 import { ChatSteps } from '@/types/steps';
 
 interface ChooseDepartmentProps {
   changeStep: (step: ChatSteps) => void;
-  collegeId: number;
+  college: ResponseCollegeType;
 }
 
-function ChooseDepartment({ changeStep, collegeId }: ChooseDepartmentProps) {
-  const departments = useDepartment(collegeId);
+function ChooseDepartment({ changeStep, college }: ChooseDepartmentProps) {
+  const departments = useDepartment(college.collegeId);
   const { setMessages } = useMessagesStore();
   const { open, onOpen, onClose } = useBottomSheet();
   const { admissionCategory, setQuestion } = useAdmissionStore();
@@ -23,7 +24,7 @@ function ChooseDepartment({ changeStep, collegeId }: ChooseDepartmentProps) {
     setQuestion({
       label: '학과별 입시',
       category: 'PASSING_RESULT',
-      question: `${admissionCategory}의 ${department} (과)에 대한 입시 결과 알려줘`,
+      question: `전형명:${admissionCategory}\n단과대학:${college.name}\n전공:${department}\n해당 내용의 입시 결과 알려줘`,
     });
     setMessages([{ role: 'user', message: department }]);
     changeStep('상세전형 질문 결과');
