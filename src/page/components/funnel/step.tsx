@@ -1,9 +1,9 @@
-interface StepProps {
-  step: string;
+interface StepProps<T extends string> {
+  step: T;
   children: React.ReactNode;
 }
 
-function Step({ children }: StepProps) {
+function Step<T extends string>({ children }: StepProps<T>) {
   return <>{children}</>;
 }
 
