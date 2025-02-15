@@ -32,25 +32,25 @@ function Main() {
       <main className="scrollbar flex h-full flex-col gap-6 overflow-y-auto overflow-x-hidden">
         <div className="flex-1 py-6 pl-12 pr-3">
           <MessageHistory />
-          <Funnel step={steps}>
-            <Funnel.Step step="입시유형 선택">
+          <Funnel<ChatSteps> step={steps}>
+            <Funnel.Step<ChatSteps> step="입시유형 선택">
               <ChooseAdmission changeStep={changeStep} />
             </Funnel.Step>
-            <Funnel.Step step="입시유형 상세전형 선택">
+            <Funnel.Step<ChatSteps> step="입시유형 상세전형 선택">
               <APIErrorBoundary>
                 <Suspense>
                   <ChooseAdmissionCategory changeStep={changeStep} admissionType={admissionType!} />
                 </Suspense>
               </APIErrorBoundary>
             </Funnel.Step>
-            <Funnel.Step step="상세전형 선택 결과">
+            <Funnel.Step<ChatSteps> step="상세전형 선택 결과">
               <AdmissionCategoryResult
                 changeStep={changeStep}
                 admissionType={admissionType!}
                 admissionCategory={admissionCategory!}
               />
             </Funnel.Step>
-            <Funnel.Step step="상세전형 질문 결과">
+            <Funnel.Step<ChatSteps> step="상세전형 질문 결과">
               <APIErrorBoundary>
                 <QuestionResult
                   admissionType={admissionType!}
@@ -60,10 +60,10 @@ function Main() {
                 />
               </APIErrorBoundary>
             </Funnel.Step>
-            <Funnel.Step step="질문 출처 결과">
+            <Funnel.Step<ChatSteps> step="질문 출처 결과">
               <ReferenceResult changeStep={changeStep} />
             </Funnel.Step>
-            <Funnel.Step step="상세전형 학과별 입시">
+            <Funnel.Step<ChatSteps> step="상세전형 학과별 입시">
               <ChooseDepartmentSteps changeStep={changeStep} />
             </Funnel.Step>
           </Funnel>
