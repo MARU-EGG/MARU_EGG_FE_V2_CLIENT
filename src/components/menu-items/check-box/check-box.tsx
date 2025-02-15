@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { CheckFalseIcon, CheckTrueIcon } from '@/assets/svg';
+import { cn } from '@/utils/style';
 
 interface CheckboxProps {
   label: string;
@@ -19,7 +20,7 @@ function Checkbox({ label, onClick, disabled = false }: CheckboxProps) {
 
   return (
     <label htmlFor={label} onClick={handleClick}>
-      <div className="relative px-4 py-3 hover:bg-gray-50">
+      <div className={cn('relative px-4 py-3', 'hover:rounded-md hover:bg-gray-50', 'cursor-pointer')}>
         <input id={label} type="checkbox" className="sr-only" disabled={disabled}></input>
         <div className="flex items-center gap-2">
           {checked ? <CheckTrueIcon /> : <CheckFalseIcon />}

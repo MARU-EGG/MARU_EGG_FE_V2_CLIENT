@@ -7,7 +7,7 @@ import DraggableScroller from '@/page/components/chat-step/choose-admission-cate
 import useAdmissionStore from '@/stores/store/admission-store';
 import useMessagesStore from '@/stores/store/message-store';
 import { ADDMISSION, AdmissionType } from '@/types/admission-type';
-import { ChatSteps } from '@/types/chat';
+import { ChatSteps } from '@/types/steps';
 import { apiEventGATrigger } from '@/utils/ga-trigger';
 
 interface Props {

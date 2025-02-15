@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import useAdmissionStore from '@/stores/store/admission-store';
 import useMessagesStore from '@/stores/store/message-store';
-import { ChatSteps } from '@/types/chat';
+import { ChatSteps } from '@/types/steps';
 import { apiEventGATrigger } from '@/utils/ga-trigger';
 import { useIsMutating } from '@tanstack/react-query';
 

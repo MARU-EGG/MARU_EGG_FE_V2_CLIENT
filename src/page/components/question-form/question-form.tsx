@@ -1,6 +1,6 @@
 import { SendIcon } from '@/assets/svg';
 import { useQuestionForm } from '@/hooks/use-question-form-hook';
-import { ChatSteps } from '@/types/chat';
+import { ChatSteps } from '@/types/steps';
 
 interface QuestionFormProps {
   changeStep: (step: ChatSteps) => void;
@@ -10,7 +10,7 @@ function QuestionForm({ changeStep }: QuestionFormProps) {
   const { content, isLoading, setContent, handleSubmit } = useQuestionForm({ changeStep });
 
   return (
-    <div className="sticky bottom-0 h-20 w-full bg-white px-2">
+    <div className="absolute bottom-0 h-20 w-full bg-white px-2">
       <form className="flex h-20" onSubmit={handleSubmit}>
         <input
           className={`h-11 w-80 bg-white ${isLoading && 'cursor-progress'} focus:outline-none`}
