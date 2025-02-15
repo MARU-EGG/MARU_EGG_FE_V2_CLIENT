@@ -2,7 +2,7 @@ import PresetButton from '@/components/preset-button/preset-button';
 import useAdmissionStore from '@/stores/store/admission-store';
 import useMessagesStore from '@/stores/store/message-store';
 import { ADDMISSION, AdmissionType } from '@/types/admission-type';
-import { ChatSteps } from '@/types/chat';
+import { ChatSteps } from '@/types/steps';
 import { apiEventGATrigger } from '@/utils/ga-trigger';
 
 interface Props {
