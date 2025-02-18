@@ -14,6 +14,6 @@ export interface ResponseDetailAdmissionType {
 }
 
 export interface isActiveAdmissionType {
-  admissionType: AdmissionType;
+  type: AdmissionType;
   isActivated: boolean;
 }
