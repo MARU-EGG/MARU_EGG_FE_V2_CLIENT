@@ -1,6 +1,4 @@
 import ChatLoadingSpinner from '@/components/loading/chat-loading-spinner';
-import PresetButton from '@/components/preset-button/preset-button';
-import PRESET_BUTTON from '@/constants/preset-buttons';
 import { AdmissionPresetType } from '@/constants/preset-buttons';
 import useAdmissionQuestionResult from '@/hooks/use-admission-question-result';
 import PresetButtons from '@/page/components/preset-buttons/preset-buttons';
