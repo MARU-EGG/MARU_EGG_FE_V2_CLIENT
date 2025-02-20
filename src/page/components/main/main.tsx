@@ -34,7 +34,11 @@ function Main() {
           <MessageHistory />
           <Funnel<ChatSteps> step={steps}>
             <Funnel.Step<ChatSteps> step="입시유형 선택">
-              <ChooseAdmission changeStep={changeStep} />
+              <APIErrorBoundary>
+                <Suspense>
+                  <ChooseAdmission changeStep={changeStep} />
+                </Suspense>
+              </APIErrorBoundary>
             </Funnel.Step>
             <Funnel.Step<ChatSteps> step="입시유형 상세전형 선택">
               <APIErrorBoundary>

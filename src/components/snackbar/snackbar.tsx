@@ -32,7 +32,7 @@ function Snackbar({ open, handleClose, autoHideDuration, message, position }: Sn
   if (!shouldRender) return null;
 
   return (
-    <div className={cn('absolute z-20 flex w-full justify-center', position === 'bottom' ? 'bottom-24' : 'top-5')}>
+    <div className={cn('absolute left-1/2 z-20 -translate-x-1/2', position === 'bottom' ? 'bottom-24' : 'top-5')}>
       <div
         onTransitionEnd={onTransitionEnd}
         className={cn(
@@ -41,7 +41,7 @@ function Snackbar({ open, handleClose, autoHideDuration, message, position }: Sn
         )}
       >
         <WarningIcon />
-        <span>{message}</span>
+        <span className="whitespace-nowrap">{message}</span>
       </div>
     </div>
   );
