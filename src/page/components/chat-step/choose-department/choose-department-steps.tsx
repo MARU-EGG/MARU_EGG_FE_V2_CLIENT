@@ -1,5 +1,6 @@
 import { Suspense, useState } from 'react';
 import APIErrorBoundary from '@/components/error/api-error-boundary';
+import ChatLoadingSpinner from '@/components/loading/chat-loading-spinner';
 import ChooseCampus from '@/page/components/chat-step/choose-department/steps/choose-campuse';
 import ChooseCollege from '@/page/components/chat-step/choose-department/steps/choose-college';
 import ChooseDepartment from '@/page/components/chat-step/choose-department/steps/choose-department';
@@ -28,14 +29,14 @@ function ChooseDepartmentSteps({ changeStep }: ChooseDepartmentStepsProps) {
       </Funnel.Step>
       <Funnel.Step<DepartmentSteps> step="단과대 선택">
         <APIErrorBoundary>
-          <Suspense>
+          <Suspense fallback={<ChatLoadingSpinner />}>
             <ChooseCollege changeDepartMentStep={changeDepartMentStep} campus={campus!} setCollege={setCollege} />
           </Suspense>
         </APIErrorBoundary>
       </Funnel.Step>
       <Funnel.Step<DepartmentSteps> step="학과 선택">
         <APIErrorBoundary>
-          <Suspense>
+          <Suspense fallback={<ChatLoadingSpinner />}>
             <ChooseDepartment changeStep={changeStep} college={college!} />
           </Suspense>
         </APIErrorBoundary>

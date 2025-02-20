@@ -1,5 +1,6 @@
 import { Suspense, useCallback, useEffect, useRef, useState } from 'react';
 import APIErrorBoundary from '@/components/error/api-error-boundary';
+import ChatLoadingSpinner from '@/components/loading/chat-loading-spinner';
 import AdmissionCategoryResult from '@/page/components/chat-step/admission-category-result/admission-category-result';
 import ChooseAdmissionCategory from '@/page/components/chat-step/choose-admission-category/choose-admission-category';
 import ChooseAdmission from '@/page/components/chat-step/choose-admission/choose-admission';
@@ -42,7 +43,7 @@ function Main() {
             </Funnel.Step>
             <Funnel.Step<ChatSteps> step="입시유형 상세전형 선택">
               <APIErrorBoundary>
-                <Suspense>
+                <Suspense fallback={<ChatLoadingSpinner />}>
                   <ChooseAdmissionCategory changeStep={changeStep} admissionType={admissionType!} />
                 </Suspense>
               </APIErrorBoundary>

@@ -1,3 +1,4 @@
+import ChatLoadingSpinner from '@/components/loading/chat-loading-spinner';
 import { AdmissionPresetType } from '@/constants/preset-buttons';
 import useAdmissionQuestionResult from '@/hooks/use-admission-question-result';
 import PresetButtons from '@/page/components/preset-buttons/preset-buttons';
@@ -37,7 +38,7 @@ function QuestionResult({ admissionType, admissionCategory, question, changeStep
     setQuestion(question);
   };
 
-  if (isLoading) return <div>Loading</div>;
+  if (isLoading) return <ChatLoadingSpinner />;
 
   return <PresetButtons changeStep={changeStep} handleQuestionSelect={handleQuestionSelect} />;
 }
