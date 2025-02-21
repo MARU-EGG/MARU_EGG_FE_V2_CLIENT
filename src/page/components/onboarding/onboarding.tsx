@@ -33,7 +33,7 @@ function Onboarding({ closeOnboarding }: OnboardingProps) {
         </div>
         <ProgressDots currentStep={currentStep} totalSteps={ONBOARDING_STEPS.length} />
         <div className="mt-5">
-          <button onClick={closeOnboarding} className="w-80 rounded-2xl bg-primary py-3 text-white shadow-2xl">
+          <button onClick={closeOnboarding} className="w-80 rounded-xl bg-primary py-3 text-white shadow-2xl">
             마루에그 바로 시작하기
           </button>
         </div>
