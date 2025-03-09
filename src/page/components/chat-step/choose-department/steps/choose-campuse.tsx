@@ -3,10 +3,10 @@ import Checkbox from '@/components/menu-items/check-box/check-box';
 import MenuList from '@/components/menu-list/menu-list';
 import systemMessage from '@/constants/message';
 import useMessagesStore from '@/stores/store/message-store';
-import { DepartmentSteps } from '@/types/steps';
+import { DepartmentSelectionSteps } from '@/types/steps';
 
 interface ChooseCampusProps {
-  changeDepartMentStep: (step: DepartmentSteps) => void;
+  changeDepartMentStep: (step: DepartmentSelectionSteps) => void;
   setCampus: (campus: '인문캠퍼스' | '자연캠퍼스') => void;
 }
 
@@ -18,7 +18,7 @@ function ChooseCampus({ changeDepartMentStep, setCampus }: ChooseCampusProps) {
   }, []);
 
   const handleClick = (campus: '인문캠퍼스' | '자연캠퍼스') => {
-    changeDepartMentStep('단과대 선택');
+    changeDepartMentStep('단과대 선택 단계');
     setCampus(campus);
     setMessages([{ role: 'user', message: campus }]);
   };

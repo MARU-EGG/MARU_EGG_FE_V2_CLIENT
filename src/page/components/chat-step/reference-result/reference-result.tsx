@@ -20,7 +20,7 @@ function ReferenceResult({ changeStep }: ReferenceResultProps) {
   const { setQuestion } = useAdmissionStore();
 
   const handleQuestionSelect = (question: AdmissionPresetType) => {
-    changeStep('상세전형 질문 결과');
+    changeStep('질문 결과 확인 단계');
     setMessages([
       {
         role: 'user',

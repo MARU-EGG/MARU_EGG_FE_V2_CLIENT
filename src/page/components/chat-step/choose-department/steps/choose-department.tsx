@@ -27,7 +27,7 @@ function ChooseDepartment({ changeStep, college }: ChooseDepartmentProps) {
       question: `전형명:${admissionCategory}\n단과대학:${college.name}\n전공:${department}\n해당 내용의 입시 결과 알려줘`,
     });
     setMessages([{ role: 'user', message: department }]);
-    changeStep('상세전형 질문 결과');
+    changeStep('질문 결과 확인 단계');
   };
 
   useEffect(() => {

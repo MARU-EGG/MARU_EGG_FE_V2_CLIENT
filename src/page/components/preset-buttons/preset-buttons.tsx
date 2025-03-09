@@ -14,7 +14,7 @@ function PresetButtons({ changeStep, handleQuestionSelect, showReferenceButton =
   const { setMessages } = useMessagesStore();
 
   const handleReferenceButtonClick = () => {
-    changeStep('질문 출처 결과');
+    changeStep('질문 출처 결과 확인 단계');
     setMessages([{ role: 'user', message: '🙋‍♂️ 어디에서 볼 수 있나요?' }]);
     apiEventGATrigger({
       category: 'first preset button click',
@@ -25,7 +25,7 @@ function PresetButtons({ changeStep, handleQuestionSelect, showReferenceButton =
   };
 
   const handleDepartmentButtonClick = () => {
-    changeStep('상세전형 학과별 입시');
+    changeStep('학과별 입시 선택 단계');
     setMessages([{ role: 'user', message: '학과별 입시' }]);
     apiEventGATrigger({
       category: 'first preset button click',
