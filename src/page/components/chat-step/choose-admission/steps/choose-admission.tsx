@@ -5,14 +5,14 @@ import useAdmissionStatusMessage from '@/hooks/use-admission-status-message';
 import useAdmissionStore from '@/stores/store/admission-store';
 import useMessagesStore from '@/stores/store/message-store';
 import { ADDMISSION, AdmissionType } from '@/types/admission-type';
-import { ChatSteps } from '@/types/steps';
+import { AdmissionSelectionSteps } from '@/types/steps';
 import { apiEventGATrigger } from '@/utils/ga-trigger';
 
 interface Props {
-  changeStep: (step: ChatSteps) => void;
+  changeAdmissionStep: (step: AdmissionSelectionSteps) => void;
 }
 
-function ChooseAdmission({ changeStep }: Props) {
+function ChooseAdmission({ changeAdmissionStep }: Props) {
   const admissions: AdmissionType[] = ['SUSI', 'JEONGSI', 'PYEONIP'];
   const { data: admissionStatus } = useAdmissionStatus();
   const { setAdmissionType } = useAdmissionStore();
@@ -21,7 +21,7 @@ function ChooseAdmission({ changeStep }: Props) {
   const { setMessages } = useMessagesStore();
 
   const selectAdmission = (admission: AdmissionType) => {
-    changeStep('입시유형 상세전형 선택');
+    changeAdmissionStep('세부전형 선택 단계');
     setMessages([{ role: 'user', message: `${ADDMISSION[admission]} 전형이 궁금해요` }]);
     setAdmissionType(admission);
     apiEventGATrigger({
