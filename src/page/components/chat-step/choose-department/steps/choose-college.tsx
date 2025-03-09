@@ -5,10 +5,10 @@ import systemMessage from '@/constants/message';
 import useCollege from '@/hooks/querys/useCollege';
 import useMessagesStore from '@/stores/store/message-store';
 import { ResponseCollegeType } from '@/types/department';
-import { DepartmentSteps } from '@/types/steps';
+import { DepartmentSelectionSteps } from '@/types/steps';
 
 interface ChooseCollegeProps {
-  changeDepartMentStep: (step: DepartmentSteps) => void;
+  changeDepartMentStep: (step: DepartmentSelectionSteps) => void;
   campus: '인문캠퍼스' | '자연캠퍼스';
   setCollege: (college: ResponseCollegeType) => void;
 }
@@ -22,7 +22,7 @@ function ChooseCollege({ changeDepartMentStep, campus, setCollege }: ChooseColle
   }, []);
 
   const handleClick = (college: ResponseCollegeType) => {
-    changeDepartMentStep('학과 선택');
+    changeDepartMentStep('학과 선택 단계');
     setCollege(college);
     setMessages([{ role: 'user', message: college.name }]);
   };

@@ -6,7 +6,7 @@ import ChooseCollege from '@/page/components/chat-step/choose-department/steps/c
 import ChooseDepartment from '@/page/components/chat-step/choose-department/steps/choose-department';
 import Funnel from '@/page/components/funnel/funnel';
 import { ResponseCollegeType } from '@/types/department';
-import { DepartmentSteps } from '@/types/steps';
+import { DepartmentSelectionSteps } from '@/types/steps';
 import { ChatSteps } from '@/types/steps';
 
 interface ChooseDepartmentStepsProps {
@@ -14,27 +14,27 @@ interface ChooseDepartmentStepsProps {
 }
 
 function ChooseDepartmentSteps({ changeStep }: ChooseDepartmentStepsProps) {
-  const [steps, setSteps] = useState<DepartmentSteps>('캠퍼스 선택');
+  const [steps, setSteps] = useState<DepartmentSelectionSteps>('캠퍼스 선택 단계');
   const [campus, setCampus] = useState<'인문캠퍼스' | '자연캠퍼스' | null>(null);
   const [college, setCollege] = useState<ResponseCollegeType | null>(null);
 
-  const changeDepartMentStep = (step: DepartmentSteps) => {
+  const changeDepartMentStep = (step: DepartmentSelectionSteps) => {
     setSteps(step);
   };
 
   return (
-    <Funnel<DepartmentSteps> step={steps}>
-      <Funnel.Step<DepartmentSteps> step="캠퍼스 선택">
+    <Funnel<DepartmentSelectionSteps> step={steps}>
+      <Funnel.Step<DepartmentSelectionSteps> step="캠퍼스 선택 단계">
         <ChooseCampus changeDepartMentStep={changeDepartMentStep} setCampus={setCampus} />
       </Funnel.Step>
-      <Funnel.Step<DepartmentSteps> step="단과대 선택">
+      <Funnel.Step<DepartmentSelectionSteps> step="단과대 선택 단계">
         <APIErrorBoundary>
           <Suspense fallback={<ChatLoadingSpinner />}>
             <ChooseCollege changeDepartMentStep={changeDepartMentStep} campus={campus!} setCollege={setCollege} />
           </Suspense>
         </APIErrorBoundary>
       </Funnel.Step>
-      <Funnel.Step<DepartmentSteps> step="학과 선택">
+      <Funnel.Step<DepartmentSelectionSteps> step="학과 선택 단계">
         <APIErrorBoundary>
           <Suspense fallback={<ChatLoadingSpinner />}>
             <ChooseDepartment changeStep={changeStep} college={college!} />
