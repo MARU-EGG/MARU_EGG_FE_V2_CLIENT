@@ -12,7 +12,7 @@ import useMessagesStore from '@/stores/store/message-store';
 import { ChatSteps } from '@/types/steps';
 
 function Main() {
-  const [steps, setSteps] = useState<ChatSteps>('입시 상세 전형 선택 단계');
+  const [steps, setSteps] = useState<ChatSteps>('입시 전형 선택 단계');
   const { admissionType, admissionCategory, question } = useAdmissionStore();
   const { messages } = useMessagesStore();
   const messageEndRef = useRef<HTMLDivElement | null>(null);
@@ -32,7 +32,7 @@ function Main() {
           <MessageHistory />
           <APIErrorBoundary>
             <Funnel<ChatSteps> step={steps}>
-              <Funnel.Step<ChatSteps> step="입시 상세 전형 선택 단계">
+              <Funnel.Step<ChatSteps> step="입시 전형 선택 단계">
                 <ChooseAdmissionSteps changeStep={changeStep} />
               </Funnel.Step>
               <Funnel.Step<ChatSteps> step="질문 결과 확인 단계">

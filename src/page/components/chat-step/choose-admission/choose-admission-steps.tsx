@@ -13,7 +13,7 @@ interface ChooseAdmissionStepsProps {
 }
 
 function ChooseAdmissionSteps({ changeStep }: ChooseAdmissionStepsProps) {
-  const [steps, setSteps] = useState<AdmissionSelectionSteps>('입시전형 선택 단계');
+  const [steps, setSteps] = useState<AdmissionSelectionSteps>('대전형 선택 단계');
   const { admissionType, admissionCategory } = useAdmissionStore();
 
   const changeAdmissionStep = (steps: AdmissionSelectionSteps) => {
@@ -22,17 +22,17 @@ function ChooseAdmissionSteps({ changeStep }: ChooseAdmissionStepsProps) {
 
   return (
     <Funnel<AdmissionSelectionSteps> step={steps}>
-      <Funnel.Step<AdmissionSelectionSteps> step="입시전형 선택 단계">
+      <Funnel.Step<AdmissionSelectionSteps> step="대전형 선택 단계">
         <Suspense fallback={<ChatLoadingSpinner />}>
           <ChooseAdmission changeAdmissionStep={changeAdmissionStep} />
         </Suspense>
       </Funnel.Step>
-      <Funnel.Step<AdmissionSelectionSteps> step="세부전형 선택 단계">
+      <Funnel.Step<AdmissionSelectionSteps> step="소전형 선택 단계">
         <Suspense fallback={<ChatLoadingSpinner />}>
           <ChooseAdmissionCategory changeAdmissionStep={changeAdmissionStep} admissionType={admissionType!} />
         </Suspense>
       </Funnel.Step>
-      <Funnel.Step<AdmissionSelectionSteps> step="세부전형 선택 결과 확인 단계">
+      <Funnel.Step<AdmissionSelectionSteps> step="전형 선택 결과 확인 단계">
         <Suspense fallback={<ChatLoadingSpinner />}>
           <AdmissionCategoryResult
             changeStep={changeStep}

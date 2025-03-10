@@ -21,7 +21,7 @@ function ChooseAdmission({ changeAdmissionStep }: Props) {
   const { setMessages } = useMessagesStore();
 
   const selectAdmission = (admission: AdmissionType) => {
-    changeAdmissionStep('세부전형 선택 단계');
+    changeAdmissionStep('소전형 선택 단계');
     setMessages([{ role: 'user', message: `${ADDMISSION[admission]} 전형이 궁금해요` }]);
     setAdmissionType(admission);
     apiEventGATrigger({

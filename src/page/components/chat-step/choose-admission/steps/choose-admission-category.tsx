@@ -21,7 +21,7 @@ function ChooseAdmissionCategory({ admissionType, changeAdmissionStep }: Props) 
   const data = useAdmissionDetail(admissionType);
 
   const selectCategory = (category: string) => {
-    changeAdmissionStep('세부전형 선택 결과 확인 단계');
+    changeAdmissionStep('전형 선택 결과 확인 단계');
     setMessages([
       {
         role: 'user',
