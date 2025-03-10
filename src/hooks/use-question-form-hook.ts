@@ -29,7 +29,7 @@ export function useQuestionForm({ changeStep }: UseQuestionFormProps) {
         message: content.trim(),
       },
     ]);
-    changeStep('상세전형 질문 결과');
+    changeStep('질문 결과 확인 단계');
     setContent('');
     apiEventGATrigger({
       category: 'form submit',

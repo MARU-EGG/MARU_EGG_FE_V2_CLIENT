@@ -1,27 +1,27 @@
 import { useEffect } from 'react';
+import DraggableScroller from '@/components/drggable-scroller/draggable-scroller';
 import TextMenu from '@/components/menu-items/text-menu/text-menu';
 import MenuList from '@/components/menu-list/menu-list';
 import systemMessage from '@/constants/message';
 import useAdmissionDetail from '@/hooks/querys/useAdmissionDetail';
-import DraggableScroller from '@/page/components/chat-step/choose-admission-category/draggable-scroller';
 import useAdmissionStore from '@/stores/store/admission-store';
 import useMessagesStore from '@/stores/store/message-store';
 import { ADDMISSION, AdmissionType } from '@/types/admission-type';
-import { ChatSteps } from '@/types/steps';
+import { AdmissionSelectionSteps } from '@/types/steps';
 import { apiEventGATrigger } from '@/utils/ga-trigger';
 
 interface Props {
-  changeStep: (step: ChatSteps) => void;
+  changeAdmissionStep: (step: AdmissionSelectionSteps) => void;
   admissionType: AdmissionType;
 }
 
-function ChooseAdmissionCategory({ admissionType, changeStep }: Props) {
+function ChooseAdmissionCategory({ admissionType, changeAdmissionStep }: Props) {
   const { setMessages } = useMessagesStore();
   const { setAdmissionCategory } = useAdmissionStore();
   const data = useAdmissionDetail(admissionType);
 
   const selectCategory = (category: string) => {
-    changeStep('상세전형 선택 결과');
+    changeAdmissionStep('전형 선택 결과 확인 단계');
     setMessages([
       {
         role: 'user',
