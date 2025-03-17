@@ -14,9 +14,9 @@ module.exports = {
         desktop: '769px',
       },
       fontSize: {
-        headline: ['16px', { lineHeight: '22.4px', fontWeight: '600' }],
-        body: ['14px', { lineHeight: '21px', fontWeight: '400' }],
-        label: ['12px', { lineHeight: '18px', fontWeight: '500' }],
+        headline: ['16px', { lineHeight: '140%', fontWeight: '600', letterSpacing: '0%' }],
+        body: ['14px', { lineHeight: '150%', fontWeight: '400', letterSpacing: '-1.5%' }],
+        label: ['12px', { lineHeight: '150%', fontWeight: '500', letterSpacing: '1.5%' }],
       },
       fontFamily: {
         sans: ['Pretendard', 'sans-serif'],
