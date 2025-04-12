@@ -14,7 +14,7 @@ function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-10 h-16 w-full bg-white">
+      <header className="sticky top-0 z-10 h-16 w-full border-b border-b-[#D7D7DA] bg-white">
         <div className="flex h-full items-center justify-between px-4">
           <IconButton aria-label="새로고침" onClick={() => window.location.reload()}>
             <ReloadIcon />
@@ -23,15 +23,15 @@ function Header() {
             <h1 className="text-center text-headline text-primary">명지대 입학처 챗봇</h1>
             {admissionType && <Chip label={CHIP_LABEL[admissionType]} />}
           </div>
-          <IconButton aria-label="메뉴" onClick={onOpen}>
-            <HamburgerIcon />
+          <IconButton aria-label="메뉴" onClick={onOpen} className="h-5 w-5">
+            <HamburgerIcon className="w-full" />
           </IconButton>
         </div>
       </header>
       <BottomSheet open={open} onClose={onClose}>
         <div className="flex h-full w-full flex-col justify-between gap-3">
-          <IconButton onClick={onClose} className="absolute right-10 top-10" aria-label="닫기 버튼">
-            <CloseIcon />
+          <IconButton onClick={onClose} className="absolute right-3 top-10 h-6 w-6" aria-label="닫기 버튼">
+            <CloseIcon className="w-full" />
           </IconButton>
           <AdmissionQuickLinkTabs initialAdmissionType={admissionType} />
           <Contact />
