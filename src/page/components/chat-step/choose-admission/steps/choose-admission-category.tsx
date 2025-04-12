@@ -48,7 +48,7 @@ function ChooseAdmissionCategory({ admissionType, changeAdmissionStep }: Props) 
 
   return (
     <div>
-      <div className="mt-2">
+      <div className="-mr-3 mt-2">
         <DraggableScroller>
           {data.map((option) => (
             <MenuList key={option.label}>
