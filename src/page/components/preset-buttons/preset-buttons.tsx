@@ -48,7 +48,7 @@ function PresetButtons({ changeStep, handleQuestionSelect, showReferenceButton =
   return (
     <div>
       <div className="mt-5 flex w-full justify-end">
-        <div className="flex w-72 flex-wrap justify-end gap-2">
+        <div className="flex w-64 flex-wrap justify-end gap-2">
           {showReferenceButton && (
             <PresetButton onClick={handleReferenceButtonClick}>🙋‍♂️ 어디에서 볼 수 있나요?</PresetButton>
           )}
