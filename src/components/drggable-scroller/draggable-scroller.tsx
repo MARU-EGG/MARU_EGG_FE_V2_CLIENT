@@ -8,7 +8,7 @@ function DraggableScroller({ children }: { children: React.ReactNode }) {
   return (
     <div
       ref={scrollRef}
-      className="scrollbar flex w-80 cursor-grab select-none flex-nowrap items-start gap-5 overflow-x-auto"
+      className="scrollbar -mr-3 flex w-full cursor-grab select-none flex-nowrap items-start gap-5 overflow-x-auto"
       {...events}
     >
       {children}
