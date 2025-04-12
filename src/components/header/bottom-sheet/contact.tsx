@@ -5,7 +5,7 @@ interface ContactItemProps {
 }
 function ContactItem({ title, department, numbers }: ContactItemProps) {
   return (
-    <div className="flex text-label text-gray-500">
+    <div className="flex text-label text-[#888891]">
       <span className="w-1/2">{title}</span>
       <span className="flex-1 whitespace-nowrap">
         {department} :{' '}
