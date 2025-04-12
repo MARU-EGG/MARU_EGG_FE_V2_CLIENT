@@ -7,7 +7,7 @@ module.exports = {
           DEFAULT: '#002968',
           egg: 'rgba(0, 41, 104, 0.06)',
         },
-        category_border: '#EBEBEB',
+        category_border: '#D7D7DA',
       },
       screens: {
         mobile: '360px',
