@@ -1,8 +1,9 @@
 import ChatLoadingAnimation from '@/assets/lottie/chat-loading.json';
 import { MaruIcon } from '@/assets/svg';
+import withDeferred from '@/components/hoc/with-deferred';
 import Lottie from 'lottie-react';
 
-function ChatLoadingSpinner() {
+function LoadingSpinner() {
   return (
     <div className="relative flex">
       <MaruIcon className="absolute -left-9 top-6" />
@@ -14,4 +15,5 @@ function ChatLoadingSpinner() {
   );
 }
 
+const ChatLoadingSpinner = withDeferred(LoadingSpinner);
 export default ChatLoadingSpinner;
