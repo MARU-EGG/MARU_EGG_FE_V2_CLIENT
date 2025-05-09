@@ -33,25 +33,29 @@ const mockData = [
 
 export const Default: Story = {
   render: () => (
-    <DraggableScroller>
-      <div className="flex h-40 min-w-56 items-center justify-center bg-gray-200">첫 번째 항목</div>
-      <div className="flex h-40 min-w-56 items-center justify-center bg-blue-200">두 번째 항목</div>
-      <div className="flex h-40 min-w-56 items-center justify-center bg-green-200">세 번째 항목</div>
-    </DraggableScroller>
+    <div className="w-96">
+      <DraggableScroller>
+        <div className="flex h-40 min-w-56 items-center justify-center bg-gray-200">첫 번째 항목</div>
+        <div className="flex h-40 min-w-56 items-center justify-center bg-blue-200">두 번째 항목</div>
+        <div className="flex h-40 min-w-56 items-center justify-center bg-green-200">세 번째 항목</div>
+      </DraggableScroller>
+    </div>
   ),
 };
 
 export const WithMenus: Story = {
   render: () => (
-    <DraggableScroller>
-      {mockData.map((option) => (
-        <MenuList key={option.label}>
-          <MenuList.Title title={`${option.label}전형`} />
-          {option.children.map((menu) => (
-            <TextMenu label={menu} key={menu} />
-          ))}
-        </MenuList>
-      ))}
-    </DraggableScroller>
+    <div className="w-96">
+      <DraggableScroller>
+        {mockData.map((option) => (
+          <MenuList key={option.label}>
+            <MenuList.Title title={`${option.label}전형`} />
+            {option.children.map((menu) => (
+              <TextMenu label={menu} key={menu} />
+            ))}
+          </MenuList>
+        ))}
+      </DraggableScroller>
+    </div>
   ),
 };
